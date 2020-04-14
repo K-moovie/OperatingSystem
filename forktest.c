@@ -4,7 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 
-int main()
+int main(int argc, char* argv[])
 {
 	pid_t pid;
     int input = 0;
@@ -17,10 +17,10 @@ int main()
     // 부모 프로세스 PID
     printf("Parent Process(PID: %d)\n", getpid());
 
-    while (1) {
+    while(1) {
         printf("input: ");
         scanf("%d", &input);
-        if (input>= 0)
+        if (input >= 0)
         // 입력된 숫자가 음수이면  다시 입력을 받는다.
             break;
         printf("Please re-enter positive numbers!!\n");
@@ -29,12 +29,12 @@ int main()
 
     // 자식 프로세스 생성
     pid = fork();
-    if (pid < 0){
+    if(pid < 0) {
         fprintf(stderr, "Fork Failed!");
         return 1;
     }
 
-    else if (pid == 0 ){
+    else if(pid == 0 ) {
         printf("Child Process(PID: %d)\n", getpid());
         int i = 0;
         for(i = 1; i <= input; i++){
